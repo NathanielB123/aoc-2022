@@ -10,7 +10,7 @@ Only the future will tell if I will succeed at any of these goals. :P
 # Progress
 
 **Kotlin Solutions:** 
-6/25
+7/25
 
 **Various Language Solutions:**  
 (Except for days 1 and 2, we tried to pair them up semi-logically.)
