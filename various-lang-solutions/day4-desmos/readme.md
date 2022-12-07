@@ -9,4 +9,4 @@ Plus manual fix up, adding [( and )] at the ends.
 
 # Link
 
-https://www.desmos.com/calculator/avjiwoebwy
+https://www.desmos.com/calculator/atrawu4etd
