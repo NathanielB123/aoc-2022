@@ -7,9 +7,13 @@ Having never previously managed to complete the full set of 25 AoC problems, I h
 
 Only the future will tell if I will succeed at any of these goals. :P
 
-# Languages Picked So Far:
+# Progress
 
-(Except for days 1 and 2, we tried to pair them up somewhat logically.)
+**Kotlin Solutions:** 
+6/25
+
+**Various Language Solutions:**  
+(Except for days 1 and 2, we tried to pair them up semi-logically.)
 
 | Day | aDotInTheVoid's Pick | My Pick       | Done?  |
 | --- | -------------------- | ------------- | ------ |
