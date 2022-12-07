@@ -23,7 +23,7 @@ Only the future will tell if I will succeed at any of these goals. :P
 |   4 | R                    | Desmos        | Yes    |
 |   5 | Awk                  | Perl          | No     |
 |   6 | LLVM Bytecode        | Java Bytecode | No     |
-|   7 |                      |               | No     |
+|   7 | Bash                 | Powershell    | No     |
 |   8 |                      |               | No     |
 |   9 |                      |               | No     |
 |  10 |                      |               | No     |
