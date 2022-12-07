@@ -7,7 +7,7 @@ Languages Picked So Far (except for days 1 and 2, we tried to pair them up somew
 |   1 | C#                   | x86 Assembly  | Yes    |
 |   2 | Clojure              | Nim           | Yes    |
 |   3 | Fortran              | COBOL         | Part A |
-|   4 | R                    | Desmos        | No     |
+|   4 | R                    | Desmos        | Yes    |
 |   5 | Awk                  | Perl          | No     |
 |   6 | LLVM Bytecode        | Java Bytecode | No     |
 |   7 |                      |               | No     |
