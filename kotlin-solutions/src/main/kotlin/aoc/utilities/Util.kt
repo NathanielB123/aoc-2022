@@ -42,7 +42,7 @@ fun Char.uAZToInt(): Int? =
 
 fun <T> T.letN(n: Int, op: (T) -> T): T {
     var tmp = this
-    for (i in 0..n) {
+    for (i in 0 until n) {
         tmp = op(tmp)
     }
     return tmp
