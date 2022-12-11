@@ -10,7 +10,7 @@ Only the future will tell if I will succeed at any of these goals. :P
 # Progress
 
 **Kotlin Solutions:** 
-7/25
+11/25
 
 **Various Language Solutions:**  
 (Except for days 1 and 2, we tried to pair them up semi-logically.)
@@ -45,7 +45,7 @@ Only the future will tell if I will succeed at any of these goals. :P
 
 # Remaining Pairs:
 
-(Zig, Odin), (F#, Ocaml), (Ruby, Lua), (Common Lisp, Scheme), (Julia, Mathematica), (JS, TS), (Haskell, Purescript), (Scala, Kotlin), (Elixir, Erlang), (C++, C), (Coca, Carbon), (PhP, Hack), (Bash, Powershell), (Elm, CoffeeScript), (Idris, Agda), (Coq, Lean), (J, APL), (R, Desmos), (Rust, Swift), (Python, Java)
+(Zig, Odin), (F#, Ocaml), (Ruby, Lua), (Common Lisp, Scheme), (Julia, Mathematica), (JS, TS), (Haskell, Purescript), (Scala, Kotlin), (Elixir, Erlang), (C++, C), (Coca, Carbon), (PhP, Hack), (Elm, CoffeeScript), (Idris, Agda), (Coq, Lean), (J, APL), (Rust, Swift), (Python, Java)
 
 # Reserves (if any prove to be too difficult):
 

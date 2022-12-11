@@ -1,23 +1,23 @@
 package aoc.utilities
 
-typealias AOCTest = ((String) -> Int) -> String?
+typealias AOCTest<T> = ((String) -> T) -> String?
 
 fun getResourceAsText(path: String): String =
     object {}.javaClass.getResource(path)!!.readText().replace("\r", "")
 
-fun aocTest(input: String?, expected: Int?, testNum: Int): AOCTest =
-    fun(aocSol: (String) -> Int): String? =
+fun <T> aocTest(input: String?, expected: T?, testNum: Int): AOCTest<T> =
+    fun(aocSol: (String) -> T): String? =
         input?.takeIf(String::isNotEmpty)?.run(aocSol)?.let { result ->
             "Test $testNum: " + if (expected == null) "Got $result" else {
                 if (result == expected) "Success!" else "Fail! Expected: $expected but got: $result"
             }
         }
 
-fun aocRunTest(aocSol: (String) -> Int, test: AOCTest) {
+fun <T> aocRunTest(aocSol: (String) -> T, test: AOCTest<T>) {
     test(aocSol)?.let(::println)
 }
 
-fun aocRun(aocSol: AoCSol) {
+fun <A, B> aocRun(aocSol: AoCSol<A, B>) {
     println("Solutions:")
     val input = getResourceAsText(aocSol.inputFilename)
     println("Part A: " + aocSol.partA(input))

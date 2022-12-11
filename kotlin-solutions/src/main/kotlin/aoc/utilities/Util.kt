@@ -13,8 +13,11 @@ fun <T> Iterable<T>.indexedCartesianProductNoDups() =
 
 fun <T> Iterable<T>.cartesianProductNoDups() =
     indexedCartesianProductNoDups().map { (f, s) -> f.second to s.second }
+
 fun <T> Iterable<T>.toPair() = let { it.first() to it.drop(1).first() }.takeIf { count() > 1 }
-fun <T> Iterable<T>.toTriple() = let { Triple(it.first(), it.drop(1).first(), it.drop(2).first()) }.takeIf { count() > 2 }
+fun <T> Iterable<T>.toTriple() =
+    let { Triple(it.first(), it.drop(1).first(), it.drop(2).first()) }.takeIf { count() > 2 }
+
 fun Pair<Int, Int>.toIntRangeUntil() = first until second
 
 fun Int.goodMod(other: Int) = Math.floorMod(this, other)
@@ -47,3 +50,27 @@ fun <T> T.letN(n: Int, op: (T) -> T): T {
     }
     return tmp
 }
+
+fun <T> Iterable<Iterable<T>>.transposed(): List<List<T>> =
+    List(first().count()) { mutableListOf<T>() }.also { acc ->
+        forEach { acc.zip(it, MutableList<T>::add) }
+    }
+
+fun <K, V> Map.Entry<K, V>.toPair(): Pair<K, V> = key to value
+
+fun <K, V> Map<K, Iterable<V>>.transposed(): Map<V, List<K>> =
+    entries.flatMap { (k, v) -> v.map { k to it } }.groupBy(Pair<K, V>::second, Pair<K, V>::first)
+
+fun <T, U> Iterable<Pair<T, Iterable<U>>>.groupedTranspose(): Iterable<Pair<T, Iterable<U>>> =
+    flatMap { (f, s) -> s.map { f to it } }.groupBy(
+        Pair<T, U>::first,
+        Pair<T, U>::second
+    ).entries.map(Map.Entry<T, List<U>>::toPair)
+
+fun Pair<Int, Int>.chebyshevLen() = first.abs().coerceAtLeast(second.abs())
+
+fun Pair<Int, Int>.mul(x: Int) = first * x to second * x
+
+fun Pair<Int, Int>.sub(other: Pair<Int, Int>) = this.add(other.mul(-1))
+
+fun Int.sign() = this.compareTo(0)

@@ -8,7 +8,7 @@ fun toScore(rps: Int, result: Int) = rps + 1 + result * 3
 fun result(rpsA: Int, rpsB: Int) = (rpsB - rpsA + 1).goodMod(3)
 fun resultInv(rps: Int, result: Int) = (rps + result - 1).goodMod(3)
 
-object Day2 : AoCSol {
+object Day2 : AoCSol<Int, Int> {
     override val day: Int
         get() = 2
 

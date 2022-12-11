@@ -5,7 +5,7 @@ import java.util.*
 
 const val TARGET_SPACE = 70000000 - 30000000
 
-object Day7 : AoCSol {
+object Day7 : AoCSol<Int, Int> {
     override val day: Int
         get() = 7
 

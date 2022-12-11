@@ -3,7 +3,7 @@ package aoc.day1
 import aoc.utilities.AoCSol
 import aoc.utilities.max
 
-object Day1 : AoCSol {
+object Day1 : AoCSol<Int, Int> {
     override val day: Int
         get() = 1
 

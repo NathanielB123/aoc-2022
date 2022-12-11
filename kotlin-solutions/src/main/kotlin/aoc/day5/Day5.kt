@@ -2,7 +2,7 @@ package aoc.day5
 
 import aoc.utilities.*
 
-object Day5 : AoCSol {
+object Day5 : AoCSol<Int, Int> {
     override val day: Int
         get() = 5
 
