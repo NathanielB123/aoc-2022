@@ -10,7 +10,7 @@ Only the future will tell if I will succeed at any of these goals. :P
 # Progress
 
 **Kotlin Solutions:** 
-11/25
+12/25
 
 **Various Language Solutions:**  
 (Except for days 1 and 2, we tried to pair them up semi-logically.)
@@ -24,10 +24,10 @@ Only the future will tell if I will succeed at any of these goals. :P
 |   5 | Awk                  | Perl          | No     |
 |   6 | LLVM Bytecode        | Java Bytecode | No     |
 |   7 | Bash                 | Powershell    | No     |
-|   8 |                      |               | No     |
-|   9 |                      |               | No     |
-|  10 |                      |               | No     |
-|  11 |                      |               | No     |
+|   8 | J                    | APL           | No     |
+|   9 | Coca                 | Carbon        | No     |
+|  10 | Coq                  | Lean          | No     |
+|  11 | Elixir               | Erlang        | No     |
 |  12 |                      |               | No     |
 |  13 |                      |               | No     |
 |  14 |                      |               | No     |
