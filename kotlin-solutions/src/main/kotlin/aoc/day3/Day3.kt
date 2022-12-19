@@ -18,5 +18,5 @@ object Day3 : AoCSol<Int, Int> {
     }
 }
 
-fun List<Char>.score() =
+private fun List<Char>.score() =
     sumOf { c -> if (c.isLowerCase()) c.code - 'a'.code + 1 else c.code - 'A'.code + 27 }

@@ -3,8 +3,6 @@ package aoc.day7
 import aoc.utilities.*
 import java.util.*
 
-const val TARGET_SPACE = 70000000 - 30000000
-
 object Day7 : AoCSol<Int, Int> {
     override val day: Int
         get() = 7
@@ -21,13 +19,15 @@ object Day7 : AoCSol<Int, Int> {
     }
 }
 
-class Directory(val parent: Directory?, val m: MutableMap<String, Directory>, var s: Int) {
+private const val TARGET_SPACE = 70000000 - 30000000
+
+private class Directory(val parent: Directory?, val m: MutableMap<String, Directory>, var s: Int) {
     val totalSize: Int by lazy {
         s + m.entries.filter { it.key != ".." }.map { it.value }.sumOf(Directory::totalSize)
     }
 }
 
-fun directorySizes(input: String, start: Optional<Directory>): List<Int> = buildList {
+private fun directorySizes(input: String, start: Optional<Directory>): List<Int> = buildList {
     var cur: Directory = start.orElse(Directory(null, mutableMapOf(), 0))
     for (line in input.split("\n").let { it.takeLast(it.size - 1) }) {
         val tokens = line.split(" ")

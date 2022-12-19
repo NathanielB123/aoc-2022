@@ -20,7 +20,7 @@ object Day10 : AoCSol<Int, String> {
     }
 }
 
-fun executeInstructions(input: String, perCycle: (Int, Int) -> Unit) {
+private fun executeInstructions(input: String, perCycle: (Int, Int) -> Unit) {
     var x = 1
     var cycle = 0
 

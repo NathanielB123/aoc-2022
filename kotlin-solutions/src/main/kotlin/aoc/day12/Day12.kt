@@ -1,35 +1,52 @@
-package aoc.day10
+package aoc.day12
 
 import aoc.utilities.*
 
-object Day10 : AoCSol<Int, String> {
+object Day12 : AoCSol<Int, Int> {
     override val day: Int
-        get() = 10
+        get() = 12
 
-    override fun partA(input: String): Int {
-        var total = 0
-        executeInstructions(input) { c, x -> if ((c + 20) % 40 == 0) total += c * x }
-        return total
-    }
+    override fun partA(input: String): Int = helper(input, setOf('S'))
 
-    override fun partB(input: String): String {
-        val draw = mutableListOf<Char>()
-        executeInstructions(input) { c, x -> draw.add(if (((c - 1) % 40 - x).abs() <= 1) '#' else '.') }
-        return "\n" + draw.chunked(40).map { it.joinToString("") { it.toString() } }
-            .joinToString("\n") { it }
-    }
+    override fun partB(input: String): Int = helper(input, setOf('S', 'a'))
 }
 
-fun executeInstructions(input: String, perCycle: (Int, Int) -> Unit) {
-    var x = 1
-    var cycle = 0
-
-    for (line in input.split("\n").map { it.split(" ") }) {
-        perCycle(++cycle, x)
-        if (line[0] != "addx") {
-            continue
-        }
-        perCycle(++cycle, x)
-        x += line[1].toInt()
+private fun helper(input: String, startChars: Set<Char>): Int {
+    val grid = input.split("\n")
+    val found = grid.map { it.map { false }.toMutableList() }
+    var positions = buildSet {
+        grid.forEachIndexed { y, r -> r.forEachIndexed { x, c -> if (c in startChars) add(x to y) } }
     }
+    var dist = 0
+    while (positions.isNotEmpty()) {
+        val newPositions = mutableSetOf<Pair<Int, Int>>()
+        for (pos in positions) {
+            val (oldX, oldY) = pos
+            for (off in listOf(0 to 1, 0 to -1, -1 to 0, 1 to 0)) {
+                val (x, y) = pos.add(off)
+                if (x >= 0 && y >= 0 && x < grid.first().length && y < grid.size && !found[y][x] && (
+                    toHeight(
+                            grid[y][x]
+                        ) - toHeight(grid[oldY][oldX])
+                    ) <= 1
+                ) {
+                    newPositions.add(x to y)
+                    found[y][x] = true
+                    if (grid[y][x] == 'E') {
+                        return dist + 1
+                    }
+                }
+            }
+        }
+        dist++
+        positions = newPositions
+    }
+    println(found.toStringCustom())
+    throw RuntimeException("No Route!")
+}
+
+private fun toHeight(x: Char) = when (x) {
+    'S' -> 0
+    'E' -> 25
+    else -> x.code - 'a'.code
 }

@@ -2,9 +2,18 @@ package aoc.day9
 
 import aoc.utilities.*
 
-val dirs = mapOf('U' to (0 to 1), 'D' to (0 to -1), 'L' to (-1 to 0), 'R' to (1 to 0))
+object Day9 : AoCSol<Int, Int> {
+    override val day: Int
+        get() = 9
 
-fun simulate(input: String, numKnots: Int): Int {
+    override fun partA(input: String): Int = simulate(input, 1)
+
+    override fun partB(input: String): Int = simulate(input, 9)
+}
+
+private val dirs = mapOf('U' to (0 to 1), 'D' to (0 to -1), 'L' to (-1 to 0), 'R' to (1 to 0))
+
+private fun simulate(input: String, numKnots: Int): Int {
     val positions: MutableSet<Pair<Int, Int>> = mutableSetOf(0 to 0)
     val knots = (0..numKnots).map { 0 to 0 }.toMutableList()
     for (mov in input.split("\n").map { it.split(" ").let { it[0][0] to it[1].toInt() } }) {
@@ -29,13 +38,4 @@ fun simulate(input: String, numKnots: Int): Int {
         }
     }
     return positions.size
-}
-
-object Day9 : AoCSol<Int, Int> {
-    override val day: Int
-        get() = 9
-
-    override fun partA(input: String): Int = simulate(input, 1)
-
-    override fun partB(input: String): Int = simulate(input, 9)
 }

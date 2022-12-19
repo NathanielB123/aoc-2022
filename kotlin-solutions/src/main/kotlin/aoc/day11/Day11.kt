@@ -12,26 +12,25 @@ object Day11 : AoCSol<Int, BigInteger> {
     override fun partB(input: String): BigInteger = helper(input, true, 10000)
 }
 
-fun helper(input: String, useFactor: Boolean, rounds: Int): BigInteger {
+private fun helper(input: String, useFactor: Boolean, rounds: Int): BigInteger {
     val monkeys = input.split("\n\n").map {
-        val monkey = it.split("\n")
-        val op = monkey[2].dropWhile { it != '=' }.split(" ").drop(1)
-        val parsedOp = { old: BigInteger ->
-            when (op[1]) {
-                "+" -> { a: BigInteger, b: BigInteger -> a + b }
-                "*" -> { a: BigInteger, b: BigInteger -> a * b }
-                else -> throw Exception("Unexpected operator!")
-            }.invoke(
-                old.takeIf { op[0] == "old" } ?: op[0].toBigInteger(),
-                old.takeIf { op[2] == "old" } ?: op[2].toBigInteger()
-            )
-        }
+        val line = it.split("\n")
+        val opLine = line[2].dropWhile { it != '=' }.split(" ").drop(1)
         Monkey(
-            monkey[1].split(", ", " ").drop(4).map { it.toBigInteger() }.toMutableList(),
-            parsedOp,
-            monkey[3].split(" ").last().toInt(),
-            monkey[4].split(" ").last().toInt(),
-            monkey[5].split(" ").last().toInt()
+            line[1].split(", ", " ").drop(4).map { it.toBigInteger() }.toMutableList(),
+            { old ->
+                when (opLine[1]) {
+                    "+" -> { a: BigInteger, b: BigInteger -> a + b }
+                    "*" -> { a: BigInteger, b: BigInteger -> a * b }
+                    else -> throw Exception("Unexpected operator!")
+                }.invoke(
+                    old.takeIf { opLine[0] == "old" } ?: opLine[0].toBigInteger(),
+                    old.takeIf { opLine[2] == "old" } ?: opLine[2].toBigInteger()
+                )
+            },
+            line[3].split(" ").last().toInt(),
+            line[4].split(" ").last().toInt(),
+            line[5].split(" ").last().toInt()
         )
     }
     val inspections: MutableList<Int> = List(monkeys.size) { 0 }.toMutableList()
@@ -51,7 +50,7 @@ fun helper(input: String, useFactor: Boolean, rounds: Int): BigInteger {
         .let { it.last().toBigInteger() * it.dropLast(1).last().toBigInteger() }
 }
 
-class Monkey(
+private class Monkey(
     var items: MutableList<BigInteger>,
     val operation: (BigInteger) -> BigInteger,
     val testFactor: Int,

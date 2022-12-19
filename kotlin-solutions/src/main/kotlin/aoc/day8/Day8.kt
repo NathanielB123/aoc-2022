@@ -57,4 +57,4 @@ object Day8 : AoCSol<Int, Int> {
     }
 }
 
-fun parse(input: String) = input.split("\n").map { it.map(Char::digitToInt) }
+private fun parse(input: String) = input.split("\n").map { it.map(Char::digitToInt) }

@@ -12,6 +12,6 @@ object Day1 : AoCSol<Int, Int> {
     override fun partB(input: String): Int = parse(input).sorted().takeLast(3).sum()
 }
 
-fun parse(input: String) = input.split("\n\n").map {
+private fun parse(input: String) = input.split("\n\n").map {
     it.split("\n").sumOf(String::toInt)
 }
