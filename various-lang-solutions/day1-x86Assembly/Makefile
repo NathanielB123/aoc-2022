@@ -7,8 +7,6 @@ CPPFLAGS  = -Wall -g -D_POSIX_SOURCE -D_DEFAULT_SOURCE -std=c17 -pedantic
 default:	day1
 
 day1:	day1.o part_a.o part_b.o
-part_a:	part_a.o
-part_b:	part_b.o
 
 .c.d:
 	@set -e; rm -f $@; \
