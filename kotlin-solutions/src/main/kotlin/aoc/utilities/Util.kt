@@ -143,3 +143,62 @@ operator fun <T> List<T>.get(i: Long) = get(i.toInt())
 operator fun <T> MutableList<T>.set(i: Long, x: T) {
     set(i.toInt(), x)
 }
+
+// Code is copied from "filterInPlace" but made inline to allow for non-local returns.
+inline fun <T> MutableCollection<T>.inlineRemoveAll(predicate: (T) -> Boolean): Boolean {
+    var result = false
+    with(iterator()) {
+        while (hasNext())
+            if (predicate(next())) {
+                remove()
+                result = true
+            }
+    }
+    return result
+}
+
+fun String.splitInclSeps(vararg seps: String): List<String> {
+    val joinedSeps = seps.joinToString("|") { it }
+    return split(Regex("(?<=($joinedSeps))|(?=($joinedSeps))"))
+}
+
+class Quadruple<A, B, C, D, E>(val first: A, val second: B, val third: C, val fourth: D) {
+    operator fun component1() = first
+    operator fun component2() = second
+    operator fun component3() = third
+    operator fun component4() = fourth
+}
+
+class Quintuple<A, B, C, D, E>(
+    val first: A,
+    val second: B,
+    val third: C,
+    val fourth: D,
+    val fifth: E
+) {
+    operator fun component1() = first
+    operator fun component2() = second
+    operator fun component3() = third
+    operator fun component4() = fourth
+    operator fun component5() = fifth
+}
+
+operator fun <K1, K2, V> Map<K1, Map<K2, V>>.get(first: K1, second: K2) = get(first)?.get(second)
+
+operator fun <K1, K2, V> Map<K1, Map<K2, V>>.get(key: Pair<K1, K2>) = get(key.first, key.second)
+
+operator fun <K1, K2, V> MutableMap<K1, MutableMap<K2, V>>.set(first: K1, second: K2, item: V) {
+    computeIfAbsent(first) { mutableMapOf() }[second] = item
+}
+
+operator fun <T> List<List<T>>.get(x: Int, y: Int) = this[y][x]
+
+operator fun <T> List<List<T>>.get(i: Pair<Int, Int>) = get(i.first, i.second)
+
+operator fun <T> List<MutableList<T>>.set(x: Int, y: Int, item: T) {
+    this[y][x] = item
+}
+
+operator fun <T> List<MutableList<T>>.set(i: Pair<Int, Int>, item: T) {
+    set(i.first, i.second, item)
+}

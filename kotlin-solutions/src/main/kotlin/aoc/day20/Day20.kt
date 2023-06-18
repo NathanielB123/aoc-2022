@@ -51,7 +51,10 @@ private fun mix(
 ) {
     for (num in original) {
         val i = curList.indexOf(num)
-        val i2 = Math.floorMod(i + num.n * key - 1, original.size - 1) + 1
+        /* To match example exactly (items moved between the first and last element are put to the
+           back instead of the front). */
+        // val i2 = Math.floorMod(i + num.n * key - 1, original.size - 1) + 1
+        val i2 = Math.floorMod(i + num.n * key, original.size - 1)
         curList.add(i2, curList.removeAt(i))
     }
 }

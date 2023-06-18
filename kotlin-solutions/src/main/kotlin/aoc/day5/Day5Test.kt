@@ -16,8 +16,8 @@ move 1 from 1 to 2"""
 
 fun main() {
     println("Tests:")
-    aocRunTest(Day5::partA, aocTest(testCase0, null, 0))
-    // aocRunTest(Day5::partB, aocTest(testCase0, null, 1))
+    aocRunTest(Day5::partA, aocTest(testCase0, "CMZ", 0))
+    aocRunTest(Day5::partB, aocTest(testCase0, "MCD", 1))
     println("")
     aocRun(Day5)
 }

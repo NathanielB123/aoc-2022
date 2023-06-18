@@ -8,13 +8,13 @@ object Day16 : AoCSol<Int, Int> {
 
     override fun partA(input: String): Int {
         val parsed = parse(input)
-        return recursiveSearch3(listOf(initState(30, parsed)), parsed, parsed.values.toSet(), 0)
+        return recursiveSearch(listOf(initState(30, parsed)), parsed, parsed.values.toSet(), 0)
     }
 
     override fun partB(input: String): Int {
         println("Warning: My Part B takes a LONG time to complete. It's basically just brute force (no memoisation at all) lol.")
         val parsed = parse(input)
-        return recursiveSearch3(
+        return recursiveSearch(
             List(2) { initState(26, parsed) },
             parsed,
             parsed.values.toSet(),
@@ -70,7 +70,7 @@ private class State(val remaining: Int, val cur: Valve) : Comparable<State> {
     operator fun component2() = cur
 }
 
-private fun recursiveSearch3(
+private fun recursiveSearch(
     states: List<State>,
     valves: Map<String, Valve>,
     unopened: Set<Valve>,
@@ -103,7 +103,7 @@ private fun recursiveSearch3(
         }
 
         best = best.coerceAtLeast(
-            value + recursiveSearch3(
+            value + recursiveSearch(
                 rest + listOf(State(newRemaining, each)),
                 valves,
                 newUnopened,

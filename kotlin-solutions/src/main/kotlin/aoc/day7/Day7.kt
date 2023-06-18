@@ -8,16 +8,18 @@ object Day7 : AoCSol<Int, Int> {
         get() = 7
 
     override fun partA(input: String): Int =
-        directorySizes(input, Optional.empty()).filter { it <= 100000 }.sum()
+        directorySizes(input).filter { it <= 100000 }.sum()
 
     override fun partB(input: String): Int {
         val start = Directory(null, mutableMapOf(), 0)
         return directorySizes(
             input,
-            Optional.of(start)
+            start
         ).filter { it >= start.totalSize - TARGET_SPACE }.min()
     }
 }
+
+private val START = Directory(null, mutableMapOf(), 0)
 
 private const val TARGET_SPACE = 70000000 - 30000000
 
@@ -27,8 +29,8 @@ private class Directory(val parent: Directory?, val m: MutableMap<String, Direct
     }
 }
 
-private fun directorySizes(input: String, start: Optional<Directory>): List<Int> = buildList {
-    var cur: Directory = start.orElse(Directory(null, mutableMapOf(), 0))
+private fun directorySizes(input: String, start: Directory? = null): List<Int> = buildList {
+    var cur: Directory = start ?: Directory(null, mutableMapOf(), 0)
     for (line in input.split("\n").let { it.takeLast(it.size - 1) }) {
         val tokens = line.split(" ")
         when (tokens[0]) {
