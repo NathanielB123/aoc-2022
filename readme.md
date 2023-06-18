@@ -32,7 +32,7 @@ Note: I am pretty behind on this side of the challenge right now - as the days h
 | 6   | LLVM Bytecode        | Java Bytecode | No     |
 | 7   | Bash                 | Powershell    | No     |
 | 8   | J                    | APL           | No     |
-| 9   | Coca                 | Carbon        | No     |
+| 9   | Koka                 | Carbon        | No     |
 | 10  | Coq                  | Lean          | No     |
 | 11  | Elixir               | Erlang        | No     |
 | 12  |                      |               | No     |
