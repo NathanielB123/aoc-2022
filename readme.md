@@ -8,6 +8,10 @@ Having never previously managed to complete the full set of 25 AoC problems, I h
 
 Only the future will tell if I will succeed at any of these goals. :P
 
+EDIT:
+
+The future has indeed told me... that I succeeded at one of them. COBOL was just too much.
+
 # Progress
 
 **Kotlin Solutions:**
@@ -48,7 +52,7 @@ Note: I am pretty behind on this side of the challenge right now - as the days h
 
 # Remaining Pairs:
 
-(Zig, Odin), (F#, Ocaml), (Ruby, Lua), (Common Lisp, Scheme), (Julia, Mathematica), (JS, TS), (Haskell, Purescript), (Scala, Kotlin), (Elixir, Erlang), (C++, C), (Coca, Carbon), (PhP, Hack), (Elm, CoffeeScript), (Idris, Agda), (Coq, Lean), (J, APL), (Rust, Swift), (Python, Java)
+(Zig, Odin), (F#, Ocaml), (Ruby, Lua), (Common Lisp, Scheme), (Julia, Mathematica), (JS, TS), (Haskell, Purescript), (Scala, Kotlin), (Elixir, Erlang), (C++, C), (Koka, Carbon), (PHP, Hack), (Elm, CoffeeScript), (Idris, Agda), (Coq, Lean), (J, APL), (Rust, Swift), (Python, Java)
 
 # Reserves (if any prove to be too difficult):
 
